@@ -30,14 +30,18 @@ then there's no winner, and the game ends."
   def turn
     # This is the main loop of the game. It keeps running while there are three numbers not chosen in a sequence.
     turn_counter = 1
+    player_turn = 1
     until game_ended
+      
       if turn_counter.odd?
         puts "It's #{game.player_1.name}'s turn"
       else
         puts "It's #{game.player_2.name}'s turn"
       end
       # Receive Input from player and run game logic
+      Input.pla
     end
+    puts "#{winner} won!"
   end
 
   def rules(matrix)
@@ -77,15 +81,22 @@ end
 
 class Input
   # In this class we define methods to protect the program and check for malicious or unintended errors.
+  attr_accessor :possible_numbers
   def player_name(name)
     # This checks if the name it's not blank, and the second one is not the same as the first one.
   end
 
-  def player_choice(choice)
+  def player_choice
     # This checks if the player chose a number that was available, provided by the Game instance. If the information is correct, it passes the information to the Game instance as a matrix 3X3.
-    attr_accessor :possible_numbers
-    @choice = choice
-    #if choice in possible_numbers;end
+    puts "Type one of the numbers available to mark your choice"
+    @@choice = gets.chomp
+    while !('1'..'9').include(@@choice)
+      @@choice = gets.chomp
+      puts "You must choose a number from 1 to 9 that was still not chosen"
+    end
+
+
+    # :possible_numbers.include(choice)
       
     
   end
@@ -98,9 +109,3 @@ table = game.create_table
 puts 'Let the game begin!'
 
 table.print_table
-
-puts ' *****************'
-
-puts 'To play, choose a number'
-
-puts "#{winner} won!"
