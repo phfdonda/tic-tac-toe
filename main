@@ -1,31 +1,70 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
+
+class Game
+# This class is supposed to contain all game logic.
+
+  # attr_reader :player_1
+  # attr_writer :player_1
+  # attr_reader :player_2
+  # attr_writer :player_2
+
+  # def create_table
+  # end
+end
+
+class Table
+  # This class is supposed to contain the information about the table itself: that means it contains a matrix 3X3 of integers ranging from 1 to 9. The numbers are exchanged to 'O' or 'X' depending on the game logic. 
+  # It should allow for Game class to retrieve and send information to change the table display.
+  # There must be a method to print the current table.
+  @@table = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+  def print_table
+    @@table.each { |x| puts x }
+ end
+
+  # def mark(choice); end
+end
+
+class Player
+  #This class contains the information about the player - for this game, only the name, actually. It also allows the game logic to display the victor. 
+  # This class is also responsible for picking up the player's choice. There must be a method for that.
+  def initialize(_name)
+    attr_reader :name
+    attr_writer :name
+  end
+
+  def player_move(_choice)
+    choice = gets.chomp
+    # TODO: Add warning about numbers that are available if user try to use a number not that is not available, be that outside of range or already marked (and act accordingly).
+  end
+end
 
 puts 'Tic-Tac-Toe Game'
 puts 'In this game, wins that who can mark three numbers in a sequence.'
 puts "Players take turns to mark the numbers. The first will have X's as marks,"
 puts "the second will have O's. They can be in diagonal, horizontal or vertical alignment."
-puts "If no number can be chosen, and no three numbers in sequence were chosen,"
+puts 'If no number can be chosen, and no three numbers in sequence were chosen,'
 puts "then there's no winner, and the game ends."
+game = Game.new
+table = game.create_table
 
 print "Player 1's name: "
-player_1 = gets.chomp
+game.player_1 = Player.new(gets.chomp)
 print "Player 2's name: "
-player_2 = gets.chomp
+game.player_2 = Player.new(gets.chomp)
 
 puts ' *****************'
 
 puts 'Let the game begin!'
 
-puts ' *****************'
+table.print_table
 
-[[" 1 | 2 | 3 "], [" 4 | 5 | 6 "], [" 7 | 8 | 9 "]].each { |x| puts x }
+puts ' *****************'
 
 puts 'To play, choose a number'
 
-choice = gets.chomp
-
-puts "It's #{player_1}'s turn"
-puts "It's #{player_2}'s turn"
+puts "It's #{game.player_1}'s turn"
+puts "It's #{game.player_2}'s turn"
 
 winner = 'Nobody'
 
