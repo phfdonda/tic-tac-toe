@@ -7,8 +7,12 @@ class Game
   attr_accessor :player_1
   attr_accessor :player_2
 
+  @@winner = 'Nobody'
+
   @@possible_numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
   @@game_ended = false
+
   @@game_description = "Tic-Tac-Toe Game
  In this game, wins that who can mark three numbers in a sequence.
  Players take turns to mark the numbers. The first will have X's as marks,
@@ -36,6 +40,11 @@ then there's no winner, and the game ends."
       # Receive Input from player and run game logic
     end
   end
+
+  def rules(matrix)
+    # This method will check if the choice completes the sequence. If it does, it will change the variable game_ended to true.
+    # If an
+  end
 end
 
 class Table
@@ -48,7 +57,7 @@ class Table
       puts r.each { |x| x }.join(' | ')
     end
   end
-  # def mark(choice); end
+  def mark(choice); end
 end
 
 class Player
@@ -74,20 +83,18 @@ class Input
   end
 
   def player_choice(choice)
-    # This checks if the player chose a number that was available, provided by the Game instance. If the information is correct, it passes the information to the Game instance.
+    # This checks if the player chose a number that was available, provided by the Game instance. If the information is correct, it passes the information to the Game instance as a matrix 3X3.
+    attr_accessor :possible_numbers
+    @choice = choice
+    if choice in possible_numbers
+      
+    end
   end
 end
 
 game = Game.new
 puts game.about
 table = game.create_table
-
-print "Player 1's name: "
-game.player_1 = Player.new(gets.chomp)
-print "Player 2's name: "
-game.player_2 = Player.new(gets.chomp)
-
-puts ' *****************'
 
 puts 'Let the game begin!'
 
@@ -96,10 +103,5 @@ table.print_table
 puts ' *****************'
 
 puts 'To play, choose a number'
-
-
-
-
-winner = 'Nobody'
 
 puts "#{winner} won!"
