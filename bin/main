@@ -3,30 +3,38 @@
 
 class Game
   # This class is supposed to contain all game logic.
-
+  attr_accessor :table
   attr_accessor :player_1
   attr_accessor :player_2
 
   def initialize
-    @@possible_numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-    @@game_ended = false
-  end
-
-  @@winner = 'Nobody'
-
-  @@game_description = "Tic-Tac-Toe Game
+    @possible_numbers = %w[1 2 3 4 5 6 7 8 9]
+    @game_ended = false
+    @table = nil
+    @player_1 = nil
+    @player_2 = nil
+    @winner = 'Nobody'
+    @game_description = "Tic-Tac-Toe Game
  In this game, wins that who can mark three numbers in a sequence.
  Players take turns to mark the numbers. The first will have X's as marks,
 the second will have O's. They can be in diagonal, horizontal or vertical alignment.
 If no number can be chosen, and no three numbers in sequence were chosen,
 then there's no winner, and the game ends."
-
-  def about
-    @@game_description
   end
 
-  def create_table
-    Table.new
+  def about
+    @game_description
+  end
+
+  def start
+    @table = Table.new
+    about
+    # Create the instance of the first player
+    @player_1 = Player.new
+    # Create the instance of the second player
+    @player_2 = Player.new
+    puts "\nLet the game begin!\n".center(20, '#')
+    turn
   end
 
   def turn
@@ -34,17 +42,14 @@ then there's no winner, and the game ends."
     turn_counter = 1
 
     until game_ended
-      if turn_counter.odd?
-        @@player = game.player_1
-      else
-        @@player = game.player_2
-      end 
-       puts "It's #{@@player.name}'s turn"
+      @player = if turn_counter.odd?
+                  game.player_1
+                else
+                  game.player_2
+                end
+      puts "It's #{@player.name}'s turn"
     end
 
-    
-
-    
     puts "#{winner} won!"
   end
 
@@ -58,11 +63,11 @@ class Table
   # It should allow for Game class to retrieve and send information to change the table display.
   # There must be a method to print the current table.
   def initialize
-    @@table = [%w[1 2 3], %w[4 5 6], %w[7 8 9]]
+    @table = [%w[1 2 3], %w[4 5 6], %w[7 8 9]]
   end
 
   def print_table
-    @@table.each do |r|
+    @table.each do |r|
       puts r.each { |x| x }.join(' | ')
     end
   end
@@ -80,40 +85,23 @@ class Player
 
   attr_reader :name
 
-   def player_name(name)
-    # This checks if the name it's not blank, and the second one is not the same as the first one.
-  end
+  def player_name(name)
+   # This checks if the name it's not blank, and the second one is not the same as the first one.
+ end
 
   def player_choice
     # This checks if the player chose a number that was available, provided by the Game instance. If the information is correct, it passes the information to the Game instance as a matrix 3X3.
+
+    attr_writer :choice
+
     puts 'Type one of the numbers available to mark your choice'
-    @@choice = gets.chomp
+
     until @@possible_numbers.include(@@choice)
       puts 'You must choose a number from 1 to 9 that was still not chosen'
-      @@choice = gets.chomp
+
     end
-
-end
-
-class Input
-  # In this class we define methods to protect the program and check for malicious or unintended errors.
-  attr_accessor :possible_numbers
-  attr_accessor :choice
-
-  def initialize
-  end
-
- 
-
   end
 end
 
 game = Game.new
-puts game.about
-table = game.create_table
-
-puts 'Let the game begin!'
-
-table.print_table
-
-a = game.player_1.player_choice
+game.start
