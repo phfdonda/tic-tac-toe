@@ -8,7 +8,7 @@ class Game
   attr_accessor :player_2
 
   def initialize
-    @possible_numbers = %w[1 2 3 4 5 6 7 8 9]
+    @@possible_numbers = %w[1 2 3 4 5 6 7 8 9]
     @game_ended = false
     @table = nil
     @player_1 = nil
@@ -28,12 +28,12 @@ then there's no winner, and the game ends."
 
   def start
     @table = Table.new
-    about
+    puts about
     # Create the instance of the first player
     @player_1 = Player.new
     # Create the instance of the second player
     @player_2 = Player.new
-    puts "\nLet the game begin!\n".center(20, '#')
+    puts "\nLet the game begin!\n"
     turn
   end
 
@@ -42,12 +42,12 @@ then there's no winner, and the game ends."
     turn_counter = 1
 
     until game_ended
-      @player = if turn_counter.odd?
-                  game.player_1
-                else
-                  game.player_2
+      @@player = if turn_counter.odd?
+                   game.player_1
+                 else
+                   game.player_2
                 end
-      puts "It's #{@player.name}'s turn"
+      puts "It's #{@@player.name}'s turn"
     end
 
     puts "#{winner} won!"
@@ -79,14 +79,33 @@ class Player
   # This class contains the information about the player - for this game, only the name, actually. It also allows the game logic to display the victor.
   # This class is also responsible for picking up the player's choice. There must be a method for that.
 
-  def initialize(name = nil)
-    @name = name
+  def initialize
+    player_name
   end
 
   attr_reader :name
 
-  def player_name(name)
-   # This checks if the name it's not blank, and the second one is not the same as the first one.
+  def player_name
+    # This checks if the name it's not blank, and the second one is not the same as the first one.
+    @@n_p = 1
+    @answer = ''
+    if @@n_p == 1
+      puts "Please, type Player 1's name: "
+      @answer = gets.chomp
+      while @answer.strip.empty?
+        puts "Please, don't leave it blank. Write something."
+        @answer = gets.chomp
+      end
+      @name = @answer
+    else
+      puts "Please, type Player 2's name: "
+      @answer = gets.chomp
+      while @answer.strip.empty?
+        puts "Please, don't leave it blank. Write something."
+        @answer = gets.chomp
+     end
+      @@n_p += 1
+ end
  end
 
   def player_choice
@@ -96,7 +115,7 @@ class Player
 
     puts 'Type one of the numbers available to mark your choice'
 
-    until @@possible_numbers.include(@@choice)
+    until @@possible_numbers.include(@choice)
       puts 'You must choose a number from 1 to 9 that was still not chosen'
 
     end
