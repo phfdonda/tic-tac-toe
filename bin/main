@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
 
 class Game
   # This class is supposed to contain all game logic.
@@ -6,11 +7,12 @@ class Game
   attr_accessor :player_1
   attr_accessor :player_2
 
+  def initialize
+    @@possible_numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+    @@game_ended = false
+  end
+
   @@winner = 'Nobody'
-
-  @@possible_numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-
-  @@game_ended = false
 
   @@game_description = "Tic-Tac-Toe Game
  In this game, wins that who can mark three numbers in a sequence.
@@ -30,23 +32,24 @@ then there's no winner, and the game ends."
   def turn
     # This is the main loop of the game. It keeps running while there are three numbers not chosen in a sequence.
     turn_counter = 1
-    player_turn = 1
+
     until game_ended
-      
       if turn_counter.odd?
-        puts "It's #{game.player_1.name}'s turn"
+        @@player = game.player_1
       else
-        puts "It's #{game.player_2.name}'s turn"
-      end
-      # Receive Input from player and run game logic
-      Input.pla
+        @@player = game.player_2
+      end 
+       puts "It's #{@@player.name}'s turn"
     end
+
+    
+
+    
     puts "#{winner} won!"
   end
 
   def rules(matrix)
     # This method will check if the choice completes the sequence. If it does, it will change the variable game_ended to true.
-    # If an
   end
 end
 
@@ -54,12 +57,16 @@ class Table
   # This class is supposed to contain the information about the table itself and render it to the user: that means it contains a matrix 3X3 of integers ranging from 1 to 9. The numbers are exchanged to 'O' or 'X' depending on the game logic.
   # It should allow for Game class to retrieve and send information to change the table display.
   # There must be a method to print the current table.
-  @@table = [%w[1 2 3], %w[4 5 6], %w[7 8 9]]
+  def initialize
+    @@table = [%w[1 2 3], %w[4 5 6], %w[7 8 9]]
+  end
+
   def print_table
     @@table.each do |r|
       puts r.each { |x| x }.join(' | ')
     end
   end
+
   def mark(choice); end
 end
 
@@ -73,32 +80,31 @@ class Player
 
   attr_reader :name
 
-  def player_move(_choice = nil)
-    choice = gets.chomp
-    # TODO: Add warning about numbers that are available if user try to use a number not that is not available, be that outside of range or already marked (and act accordingly).
-  end
-end
-
-class Input
-  # In this class we define methods to protect the program and check for malicious or unintended errors.
-  attr_accessor :possible_numbers
-  def player_name(name)
+   def player_name(name)
     # This checks if the name it's not blank, and the second one is not the same as the first one.
   end
 
   def player_choice
     # This checks if the player chose a number that was available, provided by the Game instance. If the information is correct, it passes the information to the Game instance as a matrix 3X3.
-    puts "Type one of the numbers available to mark your choice"
+    puts 'Type one of the numbers available to mark your choice'
     @@choice = gets.chomp
-    while !('1'..'9').include(@@choice)
+    until @@possible_numbers.include(@@choice)
+      puts 'You must choose a number from 1 to 9 that was still not chosen'
       @@choice = gets.chomp
-      puts "You must choose a number from 1 to 9 that was still not chosen"
     end
 
+end
 
-    # :possible_numbers.include(choice)
-      
-    
+class Input
+  # In this class we define methods to protect the program and check for malicious or unintended errors.
+  attr_accessor :possible_numbers
+  attr_accessor :choice
+
+  def initialize
+  end
+
+ 
+
   end
 end
 
@@ -109,3 +115,5 @@ table = game.create_table
 puts 'Let the game begin!'
 
 table.print_table
+
+a = game.player_1.player_choice
