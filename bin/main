@@ -39,10 +39,10 @@ then there's no winner, and the game ends."
 
   def turn
     # This is the main loop of the game. It keeps running while there are three numbers not chosen in a sequence.
-    turn_counter = 1
+    @turn_counter = 1
 
     until game_ended
-      @@player = if turn_counter.odd?
+      @@player = if @turn_counter.odd?
                    game.player_1
                  else
                    game.player_2
@@ -85,9 +85,11 @@ class Player
 
   attr_reader :name
 
+  @@n_p = 0
+
   def player_name
     # This checks if the name it's not blank, and the second one is not the same as the first one.
-    @@n_p = 1
+
     @answer = ''
     if @@n_p == 1
       puts "Please, type Player 1's name: "
@@ -97,16 +99,20 @@ class Player
         @answer = gets.chomp
       end
       @name = @answer
-    else
+      p "Player 1's name is #{@name}"
+      p 'n_p is' + @@n_p.to_s
+    elsif @@n_p == 2
       puts "Please, type Player 2's name: "
       @answer = gets.chomp
       while @answer.strip.empty?
         puts "Please, don't leave it blank. Write something."
         @answer = gets.chomp
-     end
-      @@n_p += 1
- end
- end
+        p "Player 2's name is #{@name}"
+        p 'n_p is' + @@n_p.to_s
+      end
+    end
+    @@n_p += 1
+  end
 
   def player_choice
     # This checks if the player chose a number that was available, provided by the Game instance. If the information is correct, it passes the information to the Game instance as a matrix 3X3.
