@@ -24,7 +24,7 @@ puts 'Let the game begin!'
 
 puts ' *****************'
 
-# The game begin. Starts the "turn" loop; until the game_ended variable is considered true, the loop will continue. 
+# The game begins. Starts the "turn" loop; until the game_ended variable is considered true, the loop will continue. 
 
 # Depending on the number of the turn counter, it's defined if it's player one's or player two's turn. 
 
