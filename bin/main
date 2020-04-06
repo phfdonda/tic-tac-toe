@@ -20,9 +20,13 @@ puts ' *****************'
 
 [[" 1 | 2 | 3 "], [" 4 | 5 | 6 "], [" 7 | 8 | 9 "]].each { |x| puts x }
 
+# Start of loop for choice
+
 puts 'To play, choose a number'
 
 choice = gets.chomp
+
+
 
 puts "It's #{player_1}'s turn"
 puts "It's #{player_2}'s turn"
