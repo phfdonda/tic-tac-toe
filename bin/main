@@ -8,49 +8,58 @@ class Game
     @@possible_numbers = %w[1 2 3 4 5 6 7 8 9]
     @game_ended = false
     @table = Table.new
-    @@player_1 = Player.new(1)
-    @@player_2 = Player.new(2)
+    @player_1 = Player.new(1)
+    @player_2 = Player.new(2)
     @winner = 'Nobody'
+    start
+  end
+
+  def about
     @game_description = "Tic-Tac-Toe Game
  In this game, wins that who can mark three numbers in a sequence.
  Players take turns to mark the numbers. The first will have X's as marks,
 the second will have O's. They can be in diagonal, horizontal or vertical alignment.
 If no number can be chosen, and no three numbers in sequence were chosen,
 then there's no winner, and the game ends."
-    start
-  end
-
-  def about
-    @game_description
   end
 
   def start
-    puts about
-
-    puts "\nLet the game begin!\n"
+    # pretty_start
     turn
   end
 
-  def turn
-    @turn_counter = 1
+  def pretty_start
+    system 'clear'
+    puts ' WELCOME! '.center(60, '.')
+    sleep 1.2
+    puts ' I love that you are here! '.center(60, '.')
+    puts ''.center(60, '.')
+    sleep 1.7
+    puts ' Since you are, how about we play a game? '.center(60, '.')
 
-    until game_ended
-      @@player = if @turn_counter.odd?
-                   game.player_1
-                 else
-                   game.player_2
-                end
-      puts "It's #{@@player.name}'s turn"
-    end
-
-    puts "#{winner} won!"
+    puts ' Let the game begin! '.center(60, '.')
   end
-
-  def rules(matrix)
 end
 
+def turn
+  @turn_counter = 1
+
+  until @game_ended
+    @player = if @turn_counter.odd?
+                 game.player_1
+               else
+                 game.player_2
+              end
+    puts "It's #{@player.name}'s turn"
+  end
+
+  puts "#{winner} won!"
+end
+
+def rules(matrix); end
+
 class Table
-    def initialize
+  def initialize
     @table = [%w[1 2 3], %w[4 5 6], %w[7 8 9]]
   end
 
@@ -63,14 +72,14 @@ class Table
   def mark(choice); end
 end
 
-class Player < Game
-   def initialize(n_p)
+class Player
+  def initialize(n_p)
     @n_p = n_p
     player_name
   end
 
   attr_reader :name
-
+  
   def has_a_name
     false if player.name.nil? || player.name.empty?
     true
@@ -83,25 +92,28 @@ class Player < Game
       @answer = gets.chomp
       while @answer.strip.empty?
         puts "Please, don't leave it blank. Write something."
-        @answer = gets.chomp.strip.capitalize
+        @answer = gets.chomp
       end
       @name = @answer
+      @@p1_name = @name
       p "Player 1's name is #{@name}"
     elsif @n_p == 2
       puts "Please, type Player 2's name: "
       @answer = gets.chomp
-      while @answer.strip.empty?
-        puts "Please, don't leave it blank. Write something."
-        @answer = gets.chomp
-        while @answer.strip.capitalize == @@player_1.name
+      while @answer.strip.empty? || @answer == @@p1_name
+        while @answer.strip.empty?
+          puts "Please, don't leave it blank. Write something."
+          @answer = gets.chomp
+        end
+        while @answer == @@p1_name
           puts "This is Player 1's name. Please choose another one."
           @answer = gets.chomp
         end
       end
-
+      @name = @answer
+      @@p2_name = @name
       p "Player 2's name is #{@name}"
     end
-    @n_p += 1
   end
 
   def player_choice
@@ -118,23 +130,4 @@ class Player < Game
   end
 end
 
-
-def pretty_start
-  system 'clear'
-  puts 'WELCOME!'.center(60, '.')
-  sleep 1.2
-  puts 'I love that you are here!'.center(60, '.')
-  puts ''.center(60, '.')
-  sleep 1.7
-  puts 'Since you are, how about we play a game?'.center(60, '.')
-end
-
-
-pretty_start
-
-until p1.has_a_name
-    get_player_name(gets.chomp)
-
-end
 game = Game.new
-game.start
