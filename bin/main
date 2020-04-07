@@ -44,14 +44,10 @@ then there's no winner, and the game ends."
   end
 
   def turn
-    @turn_counter += 1
-
     until @game_ended
-      @player = if @turn_counter.odd?
-                  @player_1
-                else
-                  @player_2
-                end
+      @turn_counter += 1
+      @player = @turn_counter.odd? ? @player_1 : @player_2
+      @table.print_table
       puts "It's #{@player.name}'s turn"
       @move = @player.choice
       @table.mark_choice(@move, @player.mark)
@@ -77,7 +73,9 @@ class Table
     end
 
     def mark_choice(choice, mark)
-      @options.map! { |i| i == choice ? i = mark : i }
+      @options.each do |inner_array|
+        inner_array.map!{ |i| i = i == choice ? mark : i }
+      end
     end
   end
 end
@@ -98,25 +96,25 @@ class Player
     @answer = ''
     if @n_p == 1
       puts "Please, type Player 1's name: "
-      @answer = gets.chomp
-      while @answer.strip.empty?
+      @answer = gets.chomp.strip
+      while @answer.empty?
         puts "Please, don't leave it blank. Write something."
-        @answer = gets.chomp
+        @answer = gets.chomp.strip
       end
       @name = @answer
       @@p1_name = @name
       p "Player 1's name is #{@name}"
     elsif @n_p == 2
       puts "Please, type Player 2's name: "
-      @answer = gets.chomp
+      @answer = gets.chomp.strip
       while @answer.strip.empty? || @answer == @@p1_name
-        while @answer.strip.empty?
+        while @answer.empty?
           puts "Please, don't leave it blank. Write something."
-          @answer = gets.chomp
+          @answer = gets.chomp.strip
         end
         while @answer == @@p1_name
           puts "This is Player 1's name. Please choose another one."
-          @answer = gets.chomp
+          @answer = gets.chomp.strip
         end
       end
       @name = @answer
