@@ -3,6 +3,7 @@
 
 class Game
   def initialize
+    @options = [%w[1 2 3], %w[4 5 6], %w[7 8 9]]
     @turn_counter = 0
     @game_ended = false
     @table = Table.new
@@ -22,25 +23,11 @@ then there's no winner, and the game ends."
   end
 
   def intro
-    pretty_intro
+    puts ' Let the game begin! '.center(60, '.')
   end
 
   def start
     turn
-  end
-
-  def pretty_intro
-    system 'clear'
-    puts ' WELCOME! '.center(60, '.')
-    sleep 1.0
-    puts ' I love that you are here! '.center(60, '.')
-    puts ''.center(60, '.')
-    sleep 1.0
-    puts ' Since you are, how about we play a game? '.center(60, '.')
-    sleep 1.0
-    puts ' It is called Tic-Tac-Toe. '.center(60, '.')
-
-    puts ' Let the game begin! '.center(60, '.')
   end
 
   def turn
@@ -50,16 +37,18 @@ then there's no winner, and the game ends."
       @table.print_table
       puts "It's #{@player.name}'s turn"
       @move = @player.choice
-      p "#{@player.name} mark is #{@player.mark}"
+      @pos = @table.get_choice_position(@move)
       @table.mark_choice(@move, @player.mark)
-      rules(@move)
+      check_victory(@table.check_for_seq(@pos))
     end
 
     puts "#{winner} won!"
     end
 
-  def rules(_choice)
-    @win_row = [[]]
+  def check_victory(sequence)
+    if sequence
+      @game_ended = true
+    end
   end
 end
 
@@ -72,11 +61,51 @@ class Table
     @options.each do |element|
       puts element.each { |x| x }.join(' | ')
     end
+  end
 
-    def mark_choice(choice, mark)
-      @options.each do |inner_array|
-        inner_array.map!{ |i| i = i == choice ? mark : i }
+  def check_for_seq(position)
+    
+
+    @i, @j = position[0], position[1]
+    p "i is #{@i}"
+    p "j is #{@j}" 
+    if @i == 0
+      @opposite = 2
+    elsif @i == 2
+      @opposite = 0
+    end
+    @player_mark = @options[@i][@j]
+    p @player_mark
+    if @options[1][1] == @player_mark
+      p 'first test'
+      p @opposite
+      if @j == 0 && @options[@opposite, 3] == @player_mark
+        p 'test1'
+        true
+      elsif @j == 2 && @options[@opposite, 0] == @player_mark
+        p 'test2'
+        true
       end
+    end
+    # check if @options[@i].each == @player_mark
+    # check if @options[@i].each do |j|
+     #       
+    #== @options
+    false
+  end
+
+  def get_choice_position(choice)
+    @options.each_with_index do |inner_array, i|
+      inner_array.each_with_index do |value, j|
+        @position = [i, j] if value == choice
+      end
+    end
+    @position
+  end
+
+  def mark_choice(choice, mark)
+    @options.each do |inner_array|
+      inner_array.map! { |i| i = i == choice ? mark : i }
     end
   end
 end
@@ -85,7 +114,7 @@ class Player
   def initialize(n_p)
     @@possible_numbers = %w[1 2 3 4 5 6 7 8 9]
     @n_p = n_p
-    giver
+    give_mark
     player_name
   end
 
@@ -143,6 +172,22 @@ class Player
     @@possible_numbers.delete(@choice)
     @choice
   end
+end
+
+def pretty_intro
+  system 'clear'
+  puts ' WELCOME! '.center(60, '.')
+  sleep 1.0
+  puts ' I love that you are here! '.center(60, '.')
+  puts ''.center(60, '.')
+  sleep 1.8
+  puts ' Since we are all together, how about we play a game? '.center(60, '.')
+  sleep 1.0
+  puts ' I may be old, but I can be fun! '.center(60, '.')
+  puts ' But where are my manners? Let us introduce ourselves! '.center(60, '.')
+  sleep 1.0
+  puts ' My name is Tic-Tac-Toe. My pleasure! '.center(60, '.')
+  sleep 1.0
 end
 
 game = Game.new
