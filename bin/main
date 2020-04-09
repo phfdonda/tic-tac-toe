@@ -41,19 +41,21 @@ then there's no winner, and the game ends."
       @table.mark_choice(@move, @player.mark)
       @table.print_table
       check_victory(@table.check_for_seq(@pos))
-      
+
     end
     celebrate_or_not
     end
+
+  def celebrate_or_not
+    @winner = @player.name if @game_ended
+    puts "#{@winner} won!"
+end
 
   def check_victory(sequence)
     @game_ended = true if sequence
   end
 end
-def celebrate_or_not
-    @winner = @player.name if @game_ended
-    puts "#{@winner} won!"
-end
+
 class Table
   def initialize
     @options = [%w[1 2 3], %w[4 5 6], %w[7 8 9]]
@@ -80,8 +82,17 @@ class Table
     @j = position[1]
 
     @player_mark = @options[@i][@j]
-
+    if @options[1][1] == @player_mark
+      if @j == 0 || @j == 2
+        return true if @options[op_ind(@i)][op_ind(@j)] == @player_mark
+      elsif @i == 1 && @j == 1
+        if @options.each_with_index.any? { |x, i| x.first == @player_mark && @options[op_ind(i)].last == @player_mark }
+          return true
+        end
+      end
+    end
     return true if @options[@i].all? { |x| x == @player_mark }
+    return true if @options.each.all? { |x| x[@j] == @player_mark }
 
     false
   end
