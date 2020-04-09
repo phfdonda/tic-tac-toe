@@ -31,27 +31,29 @@ then there's no winner, and the game ends."
   end
 
   def turn
+    @table.print_table
     until @game_ended
       @turn_counter += 1
       @player = @turn_counter.odd? ? @player_1 : @player_2
-      @table.print_table
       puts "It's #{@player.name}'s turn"
       @move = @player.choice
       @pos = @table.get_choice_position(@move)
       @table.mark_choice(@move, @player.mark)
+      @table.print_table
       check_victory(@table.check_for_seq(@pos))
+      
     end
-
-    puts "#{winner} won!"
+    celebrate_or_not
     end
 
   def check_victory(sequence)
-    if sequence
-      @game_ended = true
-    end
+    @game_ended = true if sequence
   end
 end
-
+def celebrate_or_not
+    @winner = @player.name if @game_ended
+    puts "#{@winner} won!"
+end
 class Table
   def initialize
     @options = [%w[1 2 3], %w[4 5 6], %w[7 8 9]]
@@ -63,34 +65,24 @@ class Table
     end
   end
 
-  def check_for_seq(position)
-    
+  def op_ind(ind)
+    if ind == 0
+      2
+    elsif ind == 2
+      0
+    else
+      ind
+    end
+  end
 
-    @i, @j = position[0], position[1]
-    p "i is #{@i}"
-    p "j is #{@j}" 
-    if @i == 0
-      @opposite = 2
-    elsif @i == 2
-      @opposite = 0
-    end
+  def check_for_seq(position)
+    @i = position[0]
+    @j = position[1]
+
     @player_mark = @options[@i][@j]
-    p @player_mark
-    if @options[1][1] == @player_mark
-      p 'first test'
-      p @opposite
-      if @j == 0 && @options[@opposite, 3] == @player_mark
-        p 'test1'
-        true
-      elsif @j == 2 && @options[@opposite, 0] == @player_mark
-        p 'test2'
-        true
-      end
-    end
-    # check if @options[@i].each == @player_mark
-    # check if @options[@i].each do |j|
-     #       
-    #== @options
+
+    return true if @options[@i].all? { |x| x == @player_mark }
+
     false
   end
 
