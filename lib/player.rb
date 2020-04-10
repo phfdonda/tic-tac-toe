@@ -23,57 +23,61 @@ class Player
   def player_name
     @answer = ''
     if @n_p == 1
-      puts
-      puts "Well, let me know, who's the first player? ".center(100, '.')
-      print "Player 1: "
-      @answer = gets.chomp.strip
+      pretty_print
+      pretty_print(" Well, let me know, who is this beauty that I'm talking to, the first player? ")
+      pretty_print
+      reg_print('Player 1: ')
+      @answer = clear_input
       while @answer.empty?
-        puts
-        puts "Oh, please, don't give me the silent treatment! Say something!".center(100, ' ')
-        puts "Who's the first player?".center(100, '.')
-        print "Player 1: "
-        @answer = gets.chomp.strip
+        pretty_print
+        make_space
+        pretty_print("Oh, please, don't give me the silent treatment! Say something!", ' ')
+        pretty_print("Who's the first player?", '.')
+        pretty_print
+        reg_print('Player 1: ')
+        @answer = clear_input
       end
       @name = @answer
       @@p1_name = @name
-      puts
-      puts "That's a beautiful name, #{@name}! You'll be Player 1, and your mark is X".center(100, ' ')
+      make_space
+      pretty_print(" That's a beautiful name, #{@name}! You'll be Player 1, and your mark is X ")
     elsif @n_p == 2
-      puts "Now, who's our friend that's going to play with us?".center(100, '.')
-      print "Player 2: "
-      @answer = gets.chomp.strip
+      pretty_print("Now, who's our friend that'll be playing with us?", '.')
+      pretty_print
+      reg_print('Player 2: ')
+      @answer = clear_input
       while @answer.empty? || @answer == @@p1_name
         while @answer.empty?
-          puts
-          puts "Now, now, how can I call you if you won't tell me your name?".center(100, '.')
-        puts "Who's the second player?".center(100, '.')
-          print "Player 2: "
-          @answer = gets.chomp.strip
+          pretty_print
+          pretty_print(" Now, now, how can I call you if you won't tell me your name? ", '.')
+          pretty_print(" Who's the second player? ")
+          reg_print('Player 2: ')
+          @answer = clear_input
         end
         while @answer == @@p1_name
-          puts
-          puts "Wait. You're twins or somethn'? Give me a different name!".center(100, '.')
-          print "Player 2: "
-          @answer = gets.chomp.strip
+          pretty_print
+          pretty_print(" Wait. You're twins or somethn'? Give me a different name! ")
+          reg_print('Player 2: ')
+          @answer = clear_input
         end
       end
       @name = @answer
       @@p2_name = @name
-      puts
-      puts "That's funny, I had a cousing called #{@name} too!".center(100, '.')
-      puts "#{@name}, you'll have the 'O' mark, and you'll be Player 2!".center(100, ' ')
-      puts
+      pretty_print
+      pretty_print(" That's funny, I have a cousin called #{@name} too! ")
+      pretty_print(" #{@name}, you'll have the 'O' mark, and you'll be Player 2! ")
+      make_space
     end
   end
 
   def choice
-    puts 'Type one of the numbers available to mark your choice'
-    @choice = gets.chomp
+    pretty_print(' Type one of the numbers available to mark your choice ', '.')
+    @choice = clear_input
     until @@possible_numbers.include?(@choice)
-      puts 'You must choose a number from 1 to 9 that was still not chosen'
-      @choice = gets.chomp
+      pretty_print(' Oh no. You must choose a number from 1 to 9 that was still not chosen ! ', ' ')
+      @choice = clear_input
     end
-    puts 'Good choice!'
+    pretty_print(' Good choice! ', ' ')
     @@possible_numbers.delete(@choice)
     @choice
   end

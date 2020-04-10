@@ -5,10 +5,15 @@ class Table
     @options = [%w[1 2 3], %w[4 5 6], %w[7 8 9]]
   end
 
-  def print_table
+  def redraw_table
+    pretty_print('', '*')
+    pretty_print
     @options.each do |element|
-      puts element.each { |x| x }.join(' | ').center(100," ")
+      pretty_print(element.each { |x| x }.join(' | '))
     end
+    pretty_print
+    pretty_print('', '*')
+   
   end
 
   def op_ind(ind)
@@ -28,11 +33,8 @@ class Table
     @player_mark = @options[@i][@j]
     if @options[1][1] == @player_mark
       if @j == 0 || @j == 2
-        return true if @options[op_ind(@i)][op_ind(@j)] == @player_mark
-      elsif @i == 1 && @j == 1
-        if @options.each_with_index.any? { |x, i| x.first == @player_mark && @options[op_ind(i)].last == @player_mark }
-          return true
-        end
+        return true if @options[op_ind(@i)][op_ind(@j)] == @player_mark elsif @i == 1 && @j == 1
+        return true if @options.each_with_index.any? { |x, i| x.first == @player_mark && @options[op_ind(i)].last == @player_mark }
       end
     end
     return true if @options[@i].all? { |x| x == @player_mark }
