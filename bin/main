@@ -5,23 +5,34 @@ require '../lib/table.rb'
 require '../lib/player.rb'
 require '../lib/game.rb'
 
+def reg_print(text = '')
+  if text.is_a?(Array)
+    text.each { |x| print x }
+  elsif text.is_a?(String)
+    print text
+  end
+end
+
+ def make_space
+    pretty_print()
+    pretty_print('', '.')
+    pretty_print()
+  end
+
+def pretty_print(text = '', ext = ' ')
+  if text.is_a?(Array)
+    text.each { |x| puts x.center(100, ext) }
+  elsif text.is_a?(String)
+    puts text.center(100, ext)
+  end
+end
+
+def clear_input
+  gets.chomp.strip
+end
 
 def pretty_intro
   system 'clear'
-  puts ' WELCOME! '.center(100, '.')
-  sleep 1.0
-  puts ' I love that you are here! '.center(100, '.')
-  puts ''.center(100, '.')
-  sleep 1.8
-  puts ' Since we are all together, how about we play a game? '.center(100, '.')
-  sleep 1.0
-  puts ' I may be old, but I can be fun! '.center(100, ' ')
-  puts ' But where are my manners? Let us introduce ourselves! '.center(100, ' ')
-  sleep 1.0
-  puts ' My name is Tic-Tac-Toe. My pleasure! '.center(100, ' ')
-  sleep 1.0
 end
 
-pretty_intro
 game = Game.new
-
