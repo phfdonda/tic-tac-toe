@@ -31,8 +31,4 @@ def clear_input
   gets.chomp.strip
 end
 
-def pretty_intro
-  system 'clear'
-end
-
 game = Game.new
