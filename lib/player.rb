@@ -32,6 +32,7 @@ class Player
         pretty_print
         make_space
         pretty_print("Oh, please, don't give me the silent treatment! Say something!", ' ')
+        pretty_print
         pretty_print("Who's the first player?", '.')
         pretty_print
         reg_print('Player 1: ')
@@ -41,6 +42,7 @@ class Player
       @@p1_name = @name
       make_space
       pretty_print(" That's a beautiful name, #{@name}! You'll be Player 1, and your mark is X ")
+      pretty_print
     elsif @n_p == 2
       pretty_print("Now, who's our friend that'll be playing with us?", '.')
       pretty_print
@@ -65,6 +67,7 @@ class Player
       @@p2_name = @name
       pretty_print
       pretty_print(" That's funny, I have a cousin called #{@name} too! ")
+      pretty_print
       pretty_print(" #{@name}, you'll have the 'O' mark, and you'll be Player 2! ")
       make_space
     end

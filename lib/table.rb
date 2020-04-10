@@ -13,7 +13,6 @@ class Table
     end
     pretty_print
     pretty_print('', '*')
-   
   end
 
   def op_ind(ind)
@@ -29,7 +28,6 @@ class Table
   def check_for_seq(position)
     @i = position[0]
     @j = position[1]
-
     @player_mark = @options[@i][@j]
     if @options[1][1] == @player_mark
       if @j == 0 || @j == 2
@@ -39,7 +37,6 @@ class Table
     end
     return true if @options[@i].all? { |x| x == @player_mark }
     return true if @options.each.all? { |x| x[@j] == @player_mark }
-
     false
   end
 
