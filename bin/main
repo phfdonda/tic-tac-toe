@@ -13,8 +13,14 @@ def reg_print(text = '')
   end
 end
 
+def clear_print(print, marker)
+  make_space
+  pretty_print(print, marker)
+  make_space
+end
+
 def make_space
-  pretty_print('', ' ')
+  pretty_print
   pretty_print('', '.')
   pretty_print
 end
