@@ -25,7 +25,7 @@ class Player
     @p_script = [' Well, let me know, who is this beauty ',
                  "that I'm talking to? ",
                  "Oh, please, don't give me the silent treatment! Say something!",
-                 "Who's the first player?"]
+                 "Who's the first player?"," That's a beautiful name, #{@name}! You'll be Player 1, and your mark is X ",]
     @answer = ''
     if @n_p == 1
       clear_print([@p_script[0],@p_script[1]])
@@ -38,9 +38,7 @@ class Player
       end
       @name = @answer
       @@p1_name = @name
-      make_space
-      pretty_print(" That's a beautiful name, #{@name}! You'll be Player 1, and your mark is X ")
-      pretty_print
+      clear_print(@p_script[4])
     elsif @n_p == 2
       pretty_print("Now, who's our friend that'll be playing with us?", '.')
       pretty_print
