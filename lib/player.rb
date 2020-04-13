@@ -21,21 +21,24 @@ class Player
   attr_reader :choice
   attr_reader :name
 
+  @p_script = [' Well, let me know, who is this beauty ',
+  "that I'm talking to, the first player? ",
+"Oh, please, don't give me the silent treatment! Say something!",
+"Who's the first player?",
+]
+
   def player_name
     @answer = ''
     if @n_p == 1
-      pretty_print
-      pretty_print(" Well, let me know, who is this beauty ")
-      pretty_print("that I'm talking to, the first player? ")
-      pretty_print
+      clear_print
       reg_print('Player 1: ')
       @answer = clear_input
       while @answer.empty?
         pretty_print
         make_space
-        pretty_print("Oh, please, don't give me the silent treatment! Say something!", ' ')
+        pretty_print(, ' ')
         pretty_print
-        pretty_print("Who's the first player?", '.')
+        pretty_print(, '.')
         pretty_print
         reg_print('Player 1: ')
         @answer = clear_input
