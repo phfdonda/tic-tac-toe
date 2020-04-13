@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # Comment
 class Game
   def initialize
@@ -8,8 +9,8 @@ class Game
     @victory = false
     @table = Table.new
     intro
-    @player_1 = Player.new(1)
-    @player_2 = Player.new(2)
+    @player1 = Player.new(1)
+    @player2 = Player.new(2)
     @winner = 'Nobody'
     start
   end
@@ -76,7 +77,7 @@ class Game
     @table.redraw_table
     until @game_ended
       @turn_counter += 1
-      @player = @turn_counter.odd? ? @player_1 : @player_2
+      @player = @turn_counter.odd? ? @player1 : @player2
       pretty_print("It's #{@player.name}'s turn")
       @move = @player.choice
       @pos = @table.get_choice_position(@move)

@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Comment
 class Table
   def initialize
     @options = [%w[1 2 3], %w[4 5 6], %w[7 8 9]]
