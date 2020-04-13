@@ -1,4 +1,6 @@
 AllCops:
+  AllCops:
+    EnableByDefault: true
   Exclude:
     - "README.md"
     - "Guardfile"
@@ -6,8 +8,15 @@ AllCops:
 
   DisplayCopNames: true
 
+Style/HashEachMethods:
+  Enabled: false
+Style/HashTransformKeys:
+  Enabled: false
+Style/HashTransformValues:
+  Enabled: false
+
 Layout/LineLength:
-  Max: 120
+  Enabled: false
 Metrics/MethodLength:
   Max: 20
 Metrics/AbcSize:
@@ -17,6 +26,10 @@ Metrics/ClassLength:
 Metrics/BlockLength:
   ExcludedMethods: ['describe']
   Max: 30
+Metrics/CyclomaticComplexity:
+  Enabled: false
+Metrics/PerceivedComplexity:
+  Enabled: false
 
 
 Style/Documentation:
@@ -31,6 +44,16 @@ Style/DefWithParentheses:
   Enabled: false
 Style/FrozenStringLiteralComment:
   EnforcedStyle: never
+Style/OptionalArguments:
+  Enabled: false
+Style/GlobalVars:
+  Enabled: false
+Style/Next:
+  Enabled: false
+Style/GuardClause:
+  Enabled: false
+Style/ClassVars:
+  Enabled: false
 
 Layout/HashAlignment:
   EnforcedColonStyle: key
@@ -39,3 +62,5 @@ Layout/ExtraSpacing:
 Layout/MultilineMethodCallIndentation:
   Enabled: true
   EnforcedStyle: indented
+Naming/VariableNumber:
+  Enabled: false

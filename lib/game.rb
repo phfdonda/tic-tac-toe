@@ -7,51 +7,48 @@ class Game
     @turn_counter = 0
     @game_ended = false
     @victory = false
+    @pretty_intro = [' WELCOME!',
+                     '',
+                     '<3 I love that you are here! <3 ',
+                     ' I was sitting in this repository,',
+                     ' waiting for you all day long... ',
+                     '',
+                     ' Since we are all together now,',
+                     'how about we play a game?',
+                     ' You know, I may be old, but I can be quite fun! ',
+                     '',
+                     ' Oh, geez, but where are my manners? ',
+                     'Let us introduce ourselves! ',
+                     ' My name is Tic-Tac-Toe. My pleasure! ']
+    @game_description = ['Tic-Tac-Toe Game',
+                         'In this game, wins that who can mark ',
+                         ' three numbers in a sequence.',
+                         ' Players take turns to mark the numbers.',
+                         " The first will have X's as marks, ",
+                         "the second will have O's.",
+                         'You can have sequences in diagonal, horizontal or ',
+                         ' vertical alignment.',
+                         'If no number can be chosen, and no three numbers ',
+                         ' in sequence were chosen,',
+                         "then there's no winner, and the game ends.",
+                         '',
+                         '']
+    @rules = [" Would you like to read the rules of the game? \n",
+              " Yes or No? You can just type 'y' or 'n' for short. ",
+              ' Alright! Here comes the rules!',
+              ' Okey-dokey! You know the drills, I see.',
+              " Let's get to it, then! ",
+              " I hope you don't find me too rude,",
+              " but you're not making any sense. ",
+              " Look, it's actually pretty easy, ",
+              " it's a 'yes' or 'no' question, see? "]
     @table = Table.new
     intro
     @player1 = Player.new(1)
     @player2 = Player.new(2)
     @winner = 'Nobody'
-    start
+    turn
   end
-
-  @pretty_intro = [' WELCOME!',
-                   '',
-                   '<3 I love that you are here! <3 ',
-                   ' I was sitting in this repository,',
-                   ' waiting for you all day long... ',
-                   '',
-                   ' Since we are all together now,',
-                   'how about we play a game?',
-                   ' You know, I may be old, but I can be quite fun! ',
-                   '',
-                   ' Oh, geez, but where are my manners? ',
-                   'Let us introduce ourselves! ',
-                   ' My name is Tic-Tac-Toe. My pleasure! ']
-
-  @game_description = ['Tic-Tac-Toe Game',
-                       'In this game, wins that who can mark ',
-                       ' three numbers in a sequence.',
-                       ' Players take turns to mark the numbers.',
-                       " The first will have X's as marks, ",
-                       "the second will have O's.",
-                       'You can have sequences in diagonal, horizontal or ',
-                       ' vertical alignment.',
-                       'If no number can be chosen, and no three numbers ',
-                       ' in sequence were chosen,',
-                       "then there's no winner, and the game ends.",
-                       '',
-                       '']
-
-  @rules = [" Would you like to read the rules of the game? \n",
-            " Yes or No? You can just type 'y' or 'n' for short. ",
-            ' Alright! Here comes the rules!',
-            ' Okey-dokey! You know the drills, I see.',
-            " Let's get to it, then! ",
-            " I hope you don't find me too rude,",
-            " but you're not making any sense. ",
-            " Look, it's actually pretty easy, ",
-            " it's a 'yes' or 'no' question, see? "]
 
   def about
     pretty_print(@game_description)
@@ -63,10 +60,6 @@ class Game
     system 'clear'
     make_space
     pretty_print(@pretty_intro, ' ')
-  end
-
-  def start
-    turn
   end
 
   def rules?
