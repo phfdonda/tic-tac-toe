@@ -32,12 +32,7 @@ class Player
       reg_print('Player 1: ')
       @answer = clear_input
       while @answer.empty?
-        pretty_print
-        make_space
-        pretty_print
-        pretty_print
-        pretty_print
-        pretty_print
+        clear_print([@p_script[2], @p_script[3]])
         reg_print('Player 1: ')
         @answer = clear_input
       end
