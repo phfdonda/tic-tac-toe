@@ -24,11 +24,10 @@ class Game
                          "then there's no winner, and the game ends.",
                          '',
                          '']
-
     pretty_print(@game_description)
     pretty_print(' Press ENTER to continue ')
     @press_enter_to_continuer = clear_input
-                      end
+  end
 
   def intro
     system 'clear'
@@ -100,7 +99,7 @@ class Game
       @comment = 'Excellent game!'
     end
     pretty_print("#{@exclamation} #{@winner} won! #{@comment}")
-end
+  end
 
   def check_victory(sequence)
     @game_ended = true && @victory = true if sequence
