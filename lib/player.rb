@@ -24,7 +24,8 @@ class Player
     @answer = ''
     if @n_p == 1
       pretty_print
-      pretty_print(" Well, let me know, who is this beauty that I'm talking to, the first player? ")
+      pretty_print(" Well, let me know, who is this beauty ")
+      pretty_print("that I'm talking to, the first player? ")
       pretty_print
       reg_print('Player 1: ')
       @answer = clear_input

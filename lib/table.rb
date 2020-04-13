@@ -32,11 +32,14 @@ class Table
     if @options[1][1] == @player_mark
       if @j == 0 || @j == 2
         return true if @options[op_ind(@i)][op_ind(@j)] == @player_mark elsif @i == 1 && @j == 1
-        return true if @options.each_with_index.any? { |x, i| x.first == @player_mark && @options[op_ind(i)].last == @player_mark }
+              if @options.each_with_index.any? { |x, i| x.first == @player_mark && @options[op_ind(i)].last == @player_mark }
+          return true
+        end
       end
     end
     return true if @options[@i].all? { |x| x == @player_mark }
     return true if @options.each.all? { |x| x[@j] == @player_mark }
+
     false
   end
 

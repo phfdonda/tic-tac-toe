@@ -13,11 +13,11 @@ def reg_print(text = '')
   end
 end
 
- def make_space
-    pretty_print()
-    pretty_print('', '.')
-    pretty_print()
-  end
+def make_space
+  pretty_print('', ' ')
+  pretty_print('', '.')
+  pretty_print
+end
 
 def pretty_print(text = '', ext = ' ')
   if text.is_a?(Array)
@@ -31,4 +31,4 @@ def clear_input
   gets.chomp.strip
 end
 
-game = Game.new
+Game.new
