@@ -1,4 +1,3 @@
-
 # Comment
 class Game
   def initialize
