@@ -17,7 +17,7 @@ class Table
   end
 
   def op_ind(ind)
-    if ind == 0
+    if ind.zero?
       2
     elsif ind == 2
       0
@@ -31,7 +31,7 @@ class Table
     @j = position[1]
     @player_mark = @options[@i][@j]
     if @options[1][1] == @player_mark
-      if @j == 0 || @j == 2
+      if @j.zero? || @j == 2
         return true if @options[op_ind(@i)][op_ind(@j)] == @player_mark elsif @i == 1 && @j == 1
               if @options.each_with_index.any? { |x, i| x.first == @player_mark && @options[op_ind(i)].last == @player_mark }
           return true
