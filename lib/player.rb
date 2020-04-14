@@ -20,22 +20,21 @@ class Player
   attr_reader :name
 
   def player_name
-    @p_script = [' Well, let me know, who is this beauty ',
-                 "that I'm talking to? ",
-                 "Oh, please, don't give me the silent treatment! Say something!"]
+    @p_script = [" Well, let me know, who is this beauty that I'm talking to? ",
+                 "Oh, please, don't give me the silent treatment! Say something!", "Who's the first player?"]
     @answer = ''
     if @n_p == 1
-      clear_print([@p_script[0], @p_script[1]])
+      clear_print(@p_script[0])
       reg_print('Player 1: ')
       @answer = clear_input
       while @answer.empty?
-        clear_print([@p_script[2], @p_script[3]])
+        clear_print(@p_script[1])
         reg_print('Player 1: ')
         @answer = clear_input
       end
       @name = @answer
       @@p1_name = @name
-      clear_print("Who's the first player?", " That's a beautiful name, #{@name}! You'll be Player 1, and your mark is X ")
+      clear_print(" That's a beautiful name, #{@name}! You'll be Player 1, and your mark is X ",'*')
     elsif @n_p == 2
       pretty_print("Now, who's our friend that'll be playing with us?", '.')
       pretty_print
@@ -51,16 +50,14 @@ class Player
         end
         while @answer == @@p1_name
           pretty_print
-          pretty_print(" Wait. You're twins or somethn'? Give me a different name! ")
+          pretty_print(" Wait. You're twins or somethn'? Give me a different name! ", '.')
           reg_print('Player 2: ')
           @answer = clear_input
         end
       end
       @name = @answer
       @@p2_name = @name
-      pretty_print
-      pretty_print(" That's funny, I have a cousin called #{@name} too! ")
-      pretty_print
+      clear_print(" That's funny, I have a cousin called #{@name} too! ",'*')
       pretty_print(" #{@name}, you'll have the 'O' mark, and you'll be Player 2! ")
       make_space
     end

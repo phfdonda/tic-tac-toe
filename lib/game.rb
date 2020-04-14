@@ -1,3 +1,4 @@
+
 # Comment
 class Game
   def initialize
@@ -8,15 +9,12 @@ class Game
     @pretty_intro = [' WELCOME!',
                      '',
                      '<3 I love that you are here! <3 ',
-                     ' I was sitting in this repository,',
-                     ' waiting for you all day long... ',
+                     ' I was sitting in this repository, waiting for you all day long... ',
                      '',
-                     ' Since we are all together now,',
-                     'how about we play a game?',
+                     ' Since we are all together now, how about we play a game?',
                      ' You know, I may be old, but I can be quite fun! ',
                      '',
-                     ' Oh, geez, but where are my manners? ',
-                     'Let us introduce ourselves! ',
+                     ' Oh, geez, but where are my manners? Let us introduce ourselves! ',
                      ' My name is Tic-Tac-Toe. My pleasure! ']
     @game_description = ['Tic-Tac-Toe Game',
                          'In this game, wins that who can mark ',

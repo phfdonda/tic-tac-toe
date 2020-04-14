@@ -32,8 +32,8 @@ class Table
       if @j.zero? || @j == 2
         return true if @options[op_ind(@i)][op_ind(@j)] == @player_mark elsif @i == 1 && @j == 1
               if @options.each_with_index.any? { |x, i| x.first == @player_mark && @options[op_ind(i)].last == @player_mark }
-          return true
-        end
+              return true
+              end
       end
     end
     return true if @options[@i].all? { |x| x == @player_mark }
@@ -53,7 +53,7 @@ class Table
 
   def mark_choice(choice, mark)
     @options.each do |inner_array|
-      inner_array.map! { |i| i = i == choice ? mark : i }
+      inner_array.map! { |i| i == choice ? mark : i }
     end
   end
 end
