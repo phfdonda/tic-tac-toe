@@ -1,6 +1,4 @@
 #!/usr/bin/env ruby
-<<<<<<< HEAD
-# frozen_string_literal: true
 
 require '../lib/table.rb'
 require '../lib/player.rb'

@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 # Comment
 class Table
   def initialize

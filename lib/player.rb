@@ -66,7 +66,7 @@ class Player
     end
   end
 
-  def choice
+  def make_choice
     pretty_print(' Type one of the numbers available to mark your choice ', '.')
     @choice = clear_input
     until @@possible_numbers.include?(@choice)
