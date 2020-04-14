@@ -34,7 +34,7 @@ class Player
       end
       @name = @answer
       @@p1_name = @name
-      clear_print(" That's a beautiful name, #{@name}! You'll be Player 1, and your mark is X ",'*')
+      clear_print(" That's a beautiful name, #{@name}! You'll be Player 1, and your mark is X ", '*')
     elsif @n_p == 2
       pretty_print("Now, who's our friend that'll be playing with us?", '.')
       pretty_print
@@ -57,7 +57,7 @@ class Player
       end
       @name = @answer
       @@p2_name = @name
-      clear_print(" That's funny, I have a cousin called #{@name} too! ",'*')
+      clear_print(" That's funny, I have a cousin called #{@name} too! ", '*')
       pretty_print(" #{@name}, you'll have the 'O' mark, and you'll be Player 2! ")
       make_space
     end

@@ -8,7 +8,7 @@ class Table
     pretty_print('', '*')
     pretty_print
     @options.each do |element|
-      pretty_print(element.each { |x| x }.join(' | '))
+      pretty_print(element.join(' | '))
     end
     pretty_print
     pretty_print('', '*')
