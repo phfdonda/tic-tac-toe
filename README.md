@@ -3,7 +3,7 @@
 <br />
 <p align="center">
   <a href="https://github.com/majovainilla/tic-tac-toe-game">
-    <img src="./microverse-logo.png" alt="Logo" width="80" height="80" style="background-color: #3f69d8; border-radius: 10%">
+    <img src="./microverse-logo.jpg" alt="Logo" width="80" height="80" style="border-radius: 10%">
   </a>
 
   <h3 align="center">Tic-Tac-Toe Game</h3>
