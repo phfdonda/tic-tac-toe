@@ -57,7 +57,7 @@ class Game
     pretty_print(@pretty_intro, ' ')
   end
 
-  def rules?
+  def rules
     pretty_print([@rules[0], @rules[1]])
     @answer = clear_input
     if %w[y yes].include?(@answer.downcase)
@@ -67,12 +67,12 @@ class Game
       clear_print([@rules[3], @rules[4]])
     else
       clear_print([@rules[5], @rules[6], @rules[7], @rules[8]])
-      rules?
+      rules
     end
   end
 
   def turn
-    rules?
+    rules
     @table.redraw_table
     until @game_ended
       @turn_counter += 1
@@ -82,7 +82,7 @@ class Game
       @pos = @table.get_choice_position(@move)
       @table.mark_choice(@move, @player.mark)
       @table.redraw_table
-      check_victory(@table.check_for_seq(@pos))
+      check_victory(@table.sequence?(@pos))
       @game_ended = true if @turn_counter == 9
     end
     celebrate_or_not

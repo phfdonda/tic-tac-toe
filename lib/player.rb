@@ -43,8 +43,8 @@ class Player
       while @answer.empty? || @answer == @@p1_name
         while @answer.empty?
           pretty_print
-          pretty_print(" Now, now, how can I call you if you won't tell me your name? ", '.')
-          pretty_print(" Who's the second player? ")
+          pretty_print(" Now, now, how can I call you if you won't tell me your name? ", ' ')
+          pretty_print(" Who's the second player? ", '.')
           reg_print('Player 2: ')
           @answer = clear_input
         end

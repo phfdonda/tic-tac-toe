@@ -24,7 +24,7 @@ class Table
     end
   end
 
-  def check_for_seq(position)
+  def sequence?(position)
     @i = position[0]
     @j = position[1]
     @player_mark = @options[@i][@j]
