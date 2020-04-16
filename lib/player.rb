@@ -69,7 +69,6 @@ class Player
     until @@possible_numbers.include?(@choice)
       pretty_print(' Oh no. You must choose a number from 1 to 9 that was still not chosen ! ', ' ')
       @choice = clear_input
-      
     end
     pretty_print(' Good choice! ', ' ')
     @@possible_numbers.delete(@choice)
