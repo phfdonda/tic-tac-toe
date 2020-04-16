@@ -87,8 +87,6 @@ Enjoy!!
 7. If you choose to read the rules, they will be displayed for you, and you can read them as much as you want. Whenever you are ready to begin the game, just press ENTER. Don't try typing anything else. It won't work. I know. I tried.
 8. The turns will begin. Each player will choose a number, and the number will be exchanged for their own mark, be that 'X' or 'O'.
 9. Do try to make a sequence. It is quite boring when the game ends in a tie.
-10. No matter how fun, you'll have other things to do eventually. When that time comes, type 'quit' instead of a number, and the game will end.
-11. But, while the fun lasts, we'll keep counting scores! You can choose to play again at the end, when Tic-Tac-Toe asks you. And please, be polite, he's an old game.
 
 
 ### Built With
