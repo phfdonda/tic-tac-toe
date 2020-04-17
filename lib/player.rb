@@ -1,4 +1,5 @@
-# Comment
+# lib/player.rb
+
 class Player
   def initialize(n_p)
     @@possible_numbers = %w[1 2 3 4 5 6 7 8 9]

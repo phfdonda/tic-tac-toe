@@ -1,3 +1,5 @@
+# lib/table.rb
+
 # Comment
 class Table
   def initialize

@@ -1,3 +1,5 @@
+# lib/game.rb
+
 # Comment
 class Game
   def initialize
