@@ -1,4 +1,4 @@
-# spec/rspec_tic-tac-toe.rb
+# spec/tic_tac_toe_spec.rb
 require './bin/main'
 
 
