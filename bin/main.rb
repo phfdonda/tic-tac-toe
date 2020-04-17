@@ -1,8 +1,8 @@
 #!/usr/bin/env ruby
-#bin/main
-require '../lib/table.rb'
-require '../lib/player.rb'
-require '../lib/game.rb'
+# bin/main.rb
+require './lib/table.rb'
+require './lib/player.rb'
+require './lib/game.rb'
 
 def reg_print(text = '')
   if text.is_a?(Array)
