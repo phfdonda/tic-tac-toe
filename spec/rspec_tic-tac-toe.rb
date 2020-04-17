@@ -1,5 +1,4 @@
 # spec/rspec_tic-tac-toe.rb
-
 require './bin/main'
 require './lib/game.rb'
 require './lib/table.rb'
