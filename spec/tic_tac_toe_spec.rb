@@ -2,6 +2,7 @@
 require './lib/game.rb'
 require './lib/player.rb'
 require './lib/table.rb'
+
 def reg_print(text = '')
   if text.is_a?(Array)
     text.each { |x| print x }
@@ -34,21 +35,30 @@ def clear_input
   gets.chomp.strip
 end
 
+test_number = rand(10)
+
 describe Game do
 let(:game) { Game.new }
 end
 
 describe Player do
-let(:player) { Player.new(1) }
-describe '#player_name' do
-it 'Should prompt the user for a name and assign the value to a variable' do
-  expect(player.name).not_to eql(nil)
-end
+  let(:player1) { Player.new(1) }
+  let(:player2) { Player.new(2) }
 
-end
-describe '#make_choice' do
-  
-end
+  describe '#player_name' do
+    it 'Should prompt the user for a name and accept only non-nil/blank values' do
+      expect(player1.name).not_to eql(nil)
+    end
+    it 'Should prompt the user for a name different than the first' do
+      expect(player1.name).not_to eql(player2.name)
+    end
+  end
+
+  describe '#make_choice' do
+    it 'Should accept only numbers between 0 and 9 inclusive' do
+      expect(player1.).to eql()
+    end
+  end
 end
 
 describe Table do

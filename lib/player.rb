@@ -64,10 +64,15 @@ class Player
     end
   end
 
+  def n_include?(number)
+    true if @@possible_numbers.include?(number)
+    false
+  end
+
   def make_choice
     pretty_print(' Type one of the numbers available to mark your choice ', '.')
     @choice = clear_input
-    until @@possible_numbers.include?(@choice)
+    until n_include?(@choice)
       pretty_print(' Oh no. You must choose a number from 1 to 9 that was still not chosen ! ', ' ')
       @choice = clear_input
     end
