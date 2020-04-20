@@ -39,12 +39,15 @@ let(:game) { Game.new }
 end
 
 describe Player do
-describe '#player_name' do
 let(:player) { Player.new(1) }
+describe '#player_name' do
 it 'Should prompt the user for a name and assign the value to a variable' do
   expect(player.name).not_to eql(nil)
 end
-it 'Should '
+
+end
+describe '#make_choice' do
+  
 end
 end
 
