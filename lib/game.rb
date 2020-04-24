@@ -47,6 +47,8 @@ class Game
     turn
   end
 
+  private
+
   def about
     pretty_print(@game_description)
     pretty_print(' Press ENTER to continue ')
@@ -75,7 +77,9 @@ class Game
 
   def turn
     rules
+    
     @table.redraw_table
+    
     until @game_ended
       @turn_counter += 1
       @player = @turn_counter.odd? ? @player1 : @player2

@@ -20,6 +20,30 @@ class Player
   attr_reader :choice
   attr_reader :name
 
+  def available_numbers
+    @@possible_numbers
+  end
+
+  def make_choice(choice = nil)
+     pretty_print(' Type one of the numbers available to mark your choice ', '.')
+     raise 'The number must be between 1 and 9' unless @@possible_numbers.include?(choice) || choice.nil?
+
+     @choice = until_possible if choice.nil?
+     pretty_print(' Good choice! ', ' ')
+     del_number(@choice)
+     @choice
+   end
+
+  private
+
+  def until_possible
+    @choice = clear_input
+    until @@possible_numbers.include?(@choice)
+      pretty_print(' Oh no. You must choose a number from 1 to 9 that was still not chosen ! ', ' ')
+      @choice = clear_input
+    end
+  end
+
   def player_name
     @p_script = [" Well, let me know, who is this beauty that I'm talking to? ",
                  "Oh, please, don't give me the silent treatment! Say something!", "Who's the first player?"]
@@ -64,20 +88,7 @@ class Player
     end
   end
 
-  def n_include?(number)
-    true if @@possible_numbers.include?(number)
-    false
-  end
-
-  def make_choice
-    pretty_print(' Type one of the numbers available to mark your choice ', '.')
-    @choice = clear_input
-    until n_include?(@choice)
-      pretty_print(' Oh no. You must choose a number from 1 to 9 that was still not chosen ! ', ' ')
-      @choice = clear_input
-    end
-    pretty_print(' Good choice! ', ' ')
-    @@possible_numbers.delete(@choice)
-    @choice
+  def del_number(choice)
+    @@possible_numbers.delete(choice)
   end
 end

@@ -16,16 +16,6 @@ class Table
     pretty_print('', '*')
   end
 
-  def op_ind(ind)
-    if ind.zero?
-      2
-    elsif ind == 2
-      0
-    else
-      ind
-    end
-  end
-
   def sequence?(position)
     @i = position[0]
     @j = position[1]
@@ -40,7 +30,7 @@ class Table
     end
     return true if @options[@i].all? { |x| x == @player_mark }
     return true if @options.each.all? { |x| x[@j] == @player_mark }
-
+    
     false
   end
 
@@ -57,5 +47,17 @@ class Table
     @options.each do |inner_array|
       inner_array.map! { |i| i == choice ? mark : i }
     end
+  end
+
+  private
+
+  def op_ind(ind)
+     if ind.zero?
+       2
+     elsif ind == 2
+       0
+     else
+       ind
+     end
   end
 end

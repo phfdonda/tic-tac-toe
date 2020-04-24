@@ -1,8 +1,6 @@
-#!/usr/bin/env ruby
-# bin/main
-require_relative '../lib/table.rb'
+# spec/player_spec.rb
 require_relative '../lib/player.rb'
-require_relative '../lib/game.rb'
+
 
 def reg_print(text = '')
   if text.is_a?(Array)
@@ -36,4 +34,22 @@ def clear_input
   gets.chomp.strip
 end
 
-Game.new
+possible_numbers = %w[1 2 3 4 5 6 7 8 9]
+test_number =
+
+  describe Player do
+  let(:player1) { Player.new(1) }
+  let(:player2) { Player.new(2) }
+
+  describe '#available_numbers' do
+    it 'Should return the numbers that are still available for choosing' do
+      expect(player1.available_numbers).to eql(possible_numbers)
+    end
+  end
+
+  describe '#make_choice' do
+    it 'Should ' do
+      expect()
+    end
+  end
+  end
