@@ -1,9 +1,10 @@
 # lib/player.rb
 
 class Player
-  def initialize(n_p)
+  def initialize(n_p, name = nil)
     @@possible_numbers = %w[1 2 3 4 5 6 7 8 9]
     @n_p = n_p
+    @name = name
     give_mark
     player_name
   end
@@ -36,7 +37,7 @@ class Player
      pretty_print(' Good choice! ', ' ')
      del_number(@choice)
      @choice
-  rspeend
+  end
 
   private
 
@@ -46,9 +47,12 @@ class Player
       pretty_print(' Oh no. You must choose a number from 1 to 9 that was still not chosen ! ', ' ')
       @choice = clear_input
     end
+    @choice
   end
 
   def player_name
+    return unless @name.nil?
+
     @p_script = [" Well, let me know, who is this beauty that I'm talking to? ",
                  "Oh, please, don't give me the silent treatment! Say something!", "Who's the first player?"]
     @answer = ''

@@ -7,13 +7,9 @@ class Table
   end
 
   def redraw_table
-    pretty_print('', '*')
-    pretty_print
     @options.each do |element|
       pretty_print(element.join(' | '))
     end
-    pretty_print
-    pretty_print('', '*')
   end
 
   def sequence?(position)
@@ -30,7 +26,7 @@ class Table
     end
     return true if @options[@i].all? { |x| x == @player_mark }
     return true if @options.each.all? { |x| x[@j] == @player_mark }
-    
+
     false
   end
 
