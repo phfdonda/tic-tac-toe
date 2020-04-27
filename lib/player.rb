@@ -26,13 +26,17 @@ class Player
 
   def make_choice(choice = nil)
      pretty_print(' Type one of the numbers available to mark your choice ', '.')
-     raise 'The number must be between 1 and 9' unless @@possible_numbers.include?(choice) || choice.nil?
-
-     @choice = until_possible if choice.nil?
+     if choice.nil?
+      @choice = until_possible
+     elsif @@possible_numbers.include?(choice)
+      @choice = choice
+     else
+      raise 'The number must be between 1 and 9'
+     end
      pretty_print(' Good choice! ', ' ')
      del_number(@choice)
      @choice
-   end
+  rspeend
 
   private
 

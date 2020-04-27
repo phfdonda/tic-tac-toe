@@ -5,7 +5,9 @@ describe Table do
   let(:table) { Table.new }
   describe '#redraw_table' do
     it 'Should print matrix 3X3 of numbers ranging 1 to 9' do
-      expect(table.redraw_table).to be_kind_of(Array)
+      system 'clear'
+      table.redraw_table
+      expect($stdout.gets.strip).to eql('f')
     end
   end
 end

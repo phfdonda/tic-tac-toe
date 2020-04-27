@@ -1,7 +1,6 @@
 # spec/player_spec.rb
 require_relative '../lib/player.rb'
 
-
 def reg_print(text = '')
   if text.is_a?(Array)
     text.each { |x| print x }
@@ -35,9 +34,8 @@ def clear_input
 end
 
 possible_numbers = %w[1 2 3 4 5 6 7 8 9]
-test_number =
 
-  describe Player do
+describe Player do
   let(:player1) { Player.new(1) }
   let(:player2) { Player.new(2) }
 
@@ -48,8 +46,10 @@ test_number =
   end
 
   describe '#make_choice' do
-    it 'Should ' do
-      expect()
+    
+    it 'Should accept only a number between 1 and 9' do
+      player1.make_choice('2')
+      expect(player1.available_numbers).to eql(%w[1 3 4 5 6 7 8 9])
     end
   end
-  end
+end

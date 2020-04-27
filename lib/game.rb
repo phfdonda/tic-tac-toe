@@ -77,9 +77,7 @@ class Game
 
   def turn
     rules
-    
     @table.redraw_table
-    
     until @game_ended
       @turn_counter += 1
       @player = @turn_counter.odd? ? @player1 : @player2
