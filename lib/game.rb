@@ -77,7 +77,7 @@ class Game
 
   def turn
     rules
-     pretty_print('', '*')
+    pretty_print('', '*')
     pretty_print
     @table.redraw_table
     pretty_print

@@ -56,10 +56,10 @@ describe Table do
        expect(table.sequence?([1, 1])).to eql(true)
     end
     it 'Should return false if no sequence is made' do
-      table.mark_choice('1','X')
-      table.mark_choice('2','O')
-      table.mark_choice('3','X')
-      expect(table.sequence?([0,1])).to eql(false)
+      table.mark_choice('1', 'X')
+      table.mark_choice('2', 'O')
+      table.mark_choice('3', 'X')
+      expect(table.sequence?([0, 1])).to eql(false)
     end
   end
 end
