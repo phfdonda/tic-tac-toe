@@ -2,7 +2,7 @@
 
 # Comment
 class Game
-  def initialize
+  def initialize(to_play = nil)
     @options = [%w[1 2 3], %w[4 5 6], %w[7 8 9]]
     @turn_counter = 0
     @game_ended = false
@@ -40,14 +40,25 @@ class Game
               " Look, it's actually pretty easy, ",
               " it's a 'yes' or 'no' question, see? "]
     @table = Table.new
+    start(to_play)
+  end
+
+  def check_victory(sequence)
+    return true && @game_ended = true && @victory = true if sequence
+    false
+  end
+
+  private
+
+  def start(to_play = nil)
+    return if to_play.nil?
+
     intro
     @player1 = Player.new(1)
     @player2 = Player.new(2)
     @winner = 'Nobody'
     turn
   end
-
-  private
 
   def about
     pretty_print(@game_description)
@@ -107,9 +118,5 @@ class Game
     end
     pretty_print("#{@exclamation} #{@winner} won! #{@comment}")
     make_space
-  end
-
-  def check_victory(sequence)
-    @game_ended = true && @victory = true if sequence
   end
 end

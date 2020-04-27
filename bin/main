@@ -36,4 +36,4 @@ def clear_input
   gets.chomp.strip
 end
 
-Game.new
+Game.new('to_play')
