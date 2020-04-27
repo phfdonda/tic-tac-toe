@@ -6,6 +6,10 @@ class Table
     @options = [%w[1 2 3], %w[4 5 6], %w[7 8 9]]
   end
 
+  def table_marks
+    @options
+  end
+
   def redraw_table
     @options.each do |element|
       pretty_print(element.join(' | '))

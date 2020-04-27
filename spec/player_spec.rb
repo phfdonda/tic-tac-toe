@@ -1,25 +1,7 @@
 # spec/player_spec.rb
 require_relative '../lib/player.rb'
 
-def reg_print(text = '')
-  if text.is_a?(Array)
-    text.each { |x| print x }
-  elsif text.is_a?(String)
-    print text
-  end
-end
-
-def clear_print(print = ' ', marker = ' ')
-  make_space
-  pretty_print(print, marker)
-  make_space
-end
-
-def make_space
-  pretty_print
-  pretty_print('', '.')
-  pretty_print
-end
+possible_numbers = %w[1 2 3 4 5 6 7 8 9]
 
 def pretty_print(text = '', ext = ' ')
   if text.is_a?(Array)
@@ -28,12 +10,6 @@ def pretty_print(text = '', ext = ' ')
     puts text.center(100, ext)
   end
 end
-
-def clear_input
-  gets.chomp.strip
-end
-
-possible_numbers = %w[1 2 3 4 5 6 7 8 9]
 
 describe Player do
   let(:player1) { Player.new(1, 'Link') }
@@ -46,7 +22,7 @@ describe Player do
   end
 
   describe '#make_choice' do
-    it 'Should accept only a number between 1 and 9' do
+    it 'Should accept the number and remove it from the available numbers' do
       player1.make_choice('2')
       expect(player1.available_numbers).to eql(%w[1 3 4 5 6 7 8 9])
     end
