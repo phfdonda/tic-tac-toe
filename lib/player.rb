@@ -9,14 +9,6 @@ class Player
     player_name
   end
 
-  def give_mark
-    if @n_p == 1
-      @mark = 'X'
-    elsif @n_p == 2
-      @mark = 'O'
-    end
-  end
-
   attr_reader :mark
   attr_reader :choice
   attr_reader :name
@@ -40,6 +32,14 @@ class Player
   end
 
   private
+
+  def give_mark
+    if @n_p == 1
+      @mark = 'X'
+    elsif @n_p == 2
+      @mark = 'O'
+    end
+  end
 
   def until_possible
     @choice = clear_input
