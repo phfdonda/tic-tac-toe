@@ -45,6 +45,7 @@ class Game
 
   def check_victory(sequence)
     return true && @game_ended = true && @victory = true if sequence
+
     false
   end
 
