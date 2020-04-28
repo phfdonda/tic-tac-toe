@@ -1,11 +1,37 @@
-# Comment
+# lib/player.rb
+
 class Player
-  def initialize(n_p)
+  def initialize(n_p, name = nil)
     @@possible_numbers = %w[1 2 3 4 5 6 7 8 9]
     @n_p = n_p
+    @name = name
     give_mark
     player_name
   end
+
+  attr_reader :mark
+  attr_reader :choice
+  attr_reader :name
+
+  def available_numbers
+    @@possible_numbers
+  end
+
+  def make_choice(choice = nil)
+     if choice.nil?
+      pretty_print(' Type one of the numbers available to mark your choice ', '.')
+      @choice = until_possible
+      pretty_print(' Good choice! ', ' ')
+     elsif @@possible_numbers.include?(choice)
+      @choice = choice
+     else
+      raise 'The number must be between 1 and 9'
+     end
+     del_number(@choice)
+     @choice
+  end
+
+  private
 
   def give_mark
     if @n_p == 1
@@ -15,11 +41,18 @@ class Player
     end
   end
 
-  attr_reader :mark
-  attr_reader :choice
-  attr_reader :name
+  def until_possible
+    @choice = clear_input
+    until @@possible_numbers.include?(@choice)
+      pretty_print(' Oh no. You must choose a number from 1 to 9 that was still not chosen ! ', ' ')
+      @choice = clear_input
+    end
+    @choice
+  end
 
   def player_name
+    return unless @name.nil?
+
     @p_script = [" Well, let me know, who is this beauty that I'm talking to? ",
                  "Oh, please, don't give me the silent treatment! Say something!", "Who's the first player?"]
     @answer = ''
@@ -63,15 +96,7 @@ class Player
     end
   end
 
-  def make_choice
-    pretty_print(' Type one of the numbers available to mark your choice ', '.')
-    @choice = clear_input
-    until @@possible_numbers.include?(@choice)
-      pretty_print(' Oh no. You must choose a number from 1 to 9 that was still not chosen ! ', ' ')
-      @choice = clear_input
-    end
-    pretty_print(' Good choice! ', ' ')
-    @@possible_numbers.delete(@choice)
-    @choice
+  def del_number(choice)
+    @@possible_numbers.delete(choice)
   end
 end

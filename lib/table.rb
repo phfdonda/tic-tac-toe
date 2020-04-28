@@ -1,26 +1,18 @@
+# lib/table.rb
+
 # Comment
 class Table
   def initialize
     @options = [%w[1 2 3], %w[4 5 6], %w[7 8 9]]
   end
 
-  def redraw_table
-    pretty_print('', '*')
-    pretty_print
-    @options.each do |element|
-      pretty_print(element.join(' | '))
-    end
-    pretty_print
-    pretty_print('', '*')
+  def table_marks
+    @options
   end
 
-  def op_ind(ind)
-    if ind.zero?
-      2
-    elsif ind == 2
-      0
-    else
-      ind
+  def redraw_table
+    @options.each do |element|
+      pretty_print(element.join(' | '))
     end
   end
 
@@ -55,5 +47,17 @@ class Table
     @options.each do |inner_array|
       inner_array.map! { |i| i == choice ? mark : i }
     end
+  end
+
+  private
+
+  def op_ind(ind)
+     if ind.zero?
+       2
+     elsif ind == 2
+       0
+     else
+       ind
+     end
   end
 end

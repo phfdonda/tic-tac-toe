@@ -1,8 +1,8 @@
 #!/usr/bin/env ruby
-
-require '../lib/table.rb'
-require '../lib/player.rb'
-require '../lib/game.rb'
+# bin/main
+require_relative '../lib/table.rb'
+require_relative '../lib/player.rb'
+require_relative '../lib/game.rb'
 
 def reg_print(text = '')
   if text.is_a?(Array)
@@ -36,4 +36,4 @@ def clear_input
   gets.chomp.strip
 end
 
-Game.new
+Game.new('to_play')
