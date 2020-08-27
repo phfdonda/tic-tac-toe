@@ -13,9 +13,9 @@
     <br />
     <a href="https://www.theodinproject.com/courses/ruby-programming/lessons/oop">The Odin Project curriculum</a>
     <br />
-    <a href="https://github.com/majovainilla/tic-tac-toe-game/issues">Report Bug</a>
+    <a href="https://github.com/phfdonda/tic-tac-toe/issues">Report Bug</a>
     ·
-    <a href="https://github.com/majovainilla/tic-tac-toe-game/issues">Request Feature</a>
+    <a href="https://github.com/phfdonda/tic-tac-toe/issues">Request Feature</a>
   </p>
 </p>
 
