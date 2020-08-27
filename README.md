@@ -2,7 +2,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <a href="https://github.com/majovainilla/tic-tac-toe-game">
+  <a href="https://github.com/phfdonda/tic-tac-toe">
     <img src="./microverse-logo.jpg" alt="Logo" width="80" height="80" style="border-radius: 10%">
   </a>
 
