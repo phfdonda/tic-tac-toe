@@ -83,7 +83,7 @@ Enjoy!!
 3. Avoid using the same name for both players, Tic-Tac-Toe won't like. He's picky like that.
 4. Also, don't leave the name blank. Tic-Tac-Toe feel hurt if ignored.
 5. Don't let Tic-Tac-Toe fool you. It will compliment you, play with you, and then close.
-6. If you know the rules, Tic-Tac-Toe won't bother you telling them all over again; you can skip when it asks if you want to skip, by pressing 'y' for 'yes', or 'yes' if are not lazy to type all three letters. Or 'YES', if you feel like yelling at Tic-Tac-Toe. It doesn't mind, it is a gentleman of a game. You can also press 'n' for 'no', or 'no', or if you feel really stressed out, 'NO'. If you try to write anything else, well, Tic-Tac-Toe will get a bit confused. After all it's not that a difficult question, right?
+6. If you know the rules, Tic-Tac-Toe won't bother you telling them all over again; you can skip when it asks if you want to skip, by pressing 'y' for 'yes', or 'yes' if you are not lazy to type all three letters. Or 'YES', if you feel like yelling at Tic-Tac-Toe. It doesn't mind, it is a gentleman of a game. You can also press 'n' for 'no', or 'no', or if you feel really stressed out, 'NO'. If you try to write anything else, well, Tic-Tac-Toe will get a bit confused. After all it's not that a difficult question, right?
 7. If you choose to read the rules, they will be displayed for you, and you can read them as much as you want. Whenever you are ready to begin the game, just press ENTER. Don't try typing anything else. It won't work. I know. I tried.
 8. The turns will begin. Each player will choose a number, and the number will be exchanged for their own mark, be that 'X' or 'O'.
 9. Do try to make a sequence. It is quite boring when the game ends in a tie.
