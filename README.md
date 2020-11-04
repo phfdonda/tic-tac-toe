@@ -87,6 +87,8 @@ Enjoy!!
 7. If you choose to read the rules, they will be displayed for you, and you can read them as much as you want. Whenever you are ready to begin the game, just press ENTER. Don't try typing anything else. It won't work. I know. I tried.
 8. The turns will begin. Each player will choose a number, and the number will be exchanged for their own mark, be that 'X' or 'O'.
 9. Do try to make a sequence. It is quite boring when the game ends in a tie.
+10. Pro Tip: you can cheat by playing against yourself. This way, you'll always win.
+11. Downside: this way you'll also always lose.
 
 
 ### Built With
