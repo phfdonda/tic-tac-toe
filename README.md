@@ -102,7 +102,7 @@ This project was built using these technologies.
 
 Pedro Henrique Ferreira Donda
 
-Github - [@phfhdonda](https://github.com/phfdonda)
+Github - [@phfdonda](https://github.com/phfdonda)
 
 LinkedIn - [PedroDonda](https://www.linkedin.com/in/pedro-donda-808621bb/)
 
